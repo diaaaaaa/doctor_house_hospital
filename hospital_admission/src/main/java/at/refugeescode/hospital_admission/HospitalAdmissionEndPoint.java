@@ -22,16 +22,16 @@ public class HospitalAdmissionEndPoint {
     }
 
     @PostMapping("/patients")
-    void receivePatient(@RequestBody List<Patient> patientFromOutside){
+    void receivePatientFromOutAndSendToDiagnoseRoom(@RequestBody Patient patientFromOutside){
 
-        patients = patientFromOutside ;
-       // patients.add(patient);
-       // patients.forEach(e-> System.out.println(e));
+        patient = patientFromOutside ;
+        patients.add(patient);
+        patients.forEach(e-> System.out.println(e));
         RestTemplate restTemplate = new RestTemplate();
-        //String url = "http://localhost:8081/morse";
-        //for (Character charc: word.toCharArray()) {
-          //  restTemplate.postForEntity(url,charc, String.class);
-       // }
+        String url = "http://localhost:8080/diagnose_room";
+        for (Patient p: patients) {
+            restTemplate.postForEntity(url,p, Patient.class);
+        }
 
     }
 }
