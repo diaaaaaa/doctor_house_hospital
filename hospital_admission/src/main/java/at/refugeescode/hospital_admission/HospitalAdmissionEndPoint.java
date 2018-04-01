@@ -18,7 +18,7 @@ public class HospitalAdmissionEndPoint {
     @GetMapping("/patients")
     String getPatient(){
 
-        return  patients.toString();
+        return  patient.toString();
     }
 
     @PostMapping("/patients")
@@ -26,7 +26,7 @@ public class HospitalAdmissionEndPoint {
 
         patient = patientFromOutside ;
         patients.add(patient);
-        patients.forEach(e-> System.out.println(e));
+        //patients.forEach(e-> System.out.println(e));
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://localhost:8080/diagnose_room";
         for (Patient p: patients) {
