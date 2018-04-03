@@ -18,16 +18,18 @@ public class DiagnoseRoomEndPoint {
     private DrHouse drHouse = new DrHouse();
 
 
+
     @PostMapping("/diagnose_room")
     Patient getPatientFromHospitalAdmission(@RequestBody Patient patientFromHospitalAdmission){
         //patient = drHouse.findOutIllness(patientFromHospitalAdmission);
-        patient = patientFromHospitalAdmission;
+          patient = drHouse.findOutIill(patientFromHospitalAdmission);
         return  patient;
     }
 
+
+
     @GetMapping("/diagnose_room")
     Patient getPatient(){
-
         return  patient;
     }
 }
