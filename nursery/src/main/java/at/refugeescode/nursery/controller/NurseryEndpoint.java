@@ -3,6 +3,7 @@ package at.refugeescode.nursery.controller;
 import at.refugeescode.hospital_admission.Patient;
 import at.refugeescode.nursery.persistence.repository.PatientRepository;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,9 @@ public class NurseryEndpoint {
     @PostMapping
     Patient save(@RequestBody Patient patient) {
         patient = giveTreatment(patient);
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "http://localhost:8084/patients";
+        restTemplate.postForEntity(url,patient, Patient.class);
         return patientRepository.save(patient);
     }
     public Patient giveTreatment(Patient patient) {
