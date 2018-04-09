@@ -1,16 +1,24 @@
 package at.refugeescode.hospital_admission;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.GeneratedValue;
 import java.util.List;
 import java.util.Optional;
 
 @Component
+@Document
 public class Patient {
-    private Integer id;
+
+    @Id
+    private Long id;
+
     private String name;
     private String symptom;
     private String illness;
+    private String treatment;
 
 
 
@@ -25,11 +33,11 @@ public class Patient {
     public void setIllness(String illness) {
         this.illness = illness;
     }
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,6 +57,14 @@ public class Patient {
         this.symptom = symptom;
     }
 
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
@@ -56,6 +72,7 @@ public class Patient {
                 ", name='" + name + '\'' +
                 ", symptom='" + symptom + '\'' +
                 ", illness='" + illness + '\'' +
+                ", treatment='" + treatment + '\'' +
                 '}';
     }
 }

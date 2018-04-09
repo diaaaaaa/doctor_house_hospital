@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 
@@ -21,9 +22,14 @@ public class DiagnoseRoomEndPoint {
 
     @PostMapping("/diagnose_room")
     Patient getPatientFromHospitalAdmission(@RequestBody Patient patientFromHospitalAdmission){
-          patient = drHouse.findOutIill(patientFromHospitalAdmission);
+        patient = drHouse.findOutIill(patientFromHospitalAdmission);
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "http://localhost:8083/patients";
+        restTemplate.postForEntity(url,patient, Patient.class);
         return  patient;
     }
+
+
 
 
 
