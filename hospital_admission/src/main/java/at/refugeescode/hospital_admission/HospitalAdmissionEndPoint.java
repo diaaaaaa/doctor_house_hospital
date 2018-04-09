@@ -18,7 +18,7 @@ public class HospitalAdmissionEndPoint {
     @GetMapping("/patients")
     String getPatient(){
 
-        return  patient.toString();
+        return  patients.toString();
     }
 
     @PostMapping("/patients")
@@ -34,4 +34,17 @@ public class HospitalAdmissionEndPoint {
         }
 
     }
-}
+
+    /*
+    @PostMapping("/patients")
+    void receivePatientFromOutAndSendToDiagnoseRoom(@RequestBody List<Patient> patientFromOutside ) {
+        for (Patient p: patientFromOutside)
+             {
+
+                // receivePatientFromOutAndSendToDiagnoseRoom(p);
+
+             }
+
+    }*/
+
+    }

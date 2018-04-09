@@ -21,7 +21,6 @@ public class DiagnoseRoomEndPoint {
 
     @PostMapping("/diagnose_room")
     Patient getPatientFromHospitalAdmission(@RequestBody Patient patientFromHospitalAdmission){
-        //patient = drHouse.findOutIllness(patientFromHospitalAdmission);
           patient = drHouse.findOutIill(patientFromHospitalAdmission);
         return  patient;
     }
